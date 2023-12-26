@@ -15,18 +15,18 @@ namespace FormTCPChat_Client
 {
     public partial class TehChat : Form
     {
-        string loggin;
-        string host = "127.0.0.1";
-        int port = 8888;
-        bool send_check = true;
-        TcpClient client = new TcpClient();
-        StreamReader? Reader = null;
-        StreamWriter? Writer = null;
+        private TSettings settings;
 
         public TehChat(string name, string namepc, string typeuser)
         {
             InitializeComponent();
-            loggin = $"{ namepc} | { name} ({ typeuser})";
+            settings = new TSettings();
+            FormData.loggin = $"{ namepc} | { name} ({ typeuser})";
+        }
+
+        public TSettings FormData
+        {
+            get { return settings; }
         }
 
         private void TehChat_Load(object sender, EventArgs e)
@@ -43,15 +43,15 @@ namespace FormTCPChat_Client
 
         public async void button1_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add($"Добро пожаловать, {loggin}");
+            listBox1.Items.Add($"Добро пожаловать, {FormData.loggin}");
             try
             {
-                client.Connect(host, port);
-                Reader = new StreamReader(client.GetStream());
-                Writer = new StreamWriter(client.GetStream());
-                if (Reader is null || Writer is null) return;
-                await Writer.WriteLineAsync(loggin.ToString());
-                await Writer.FlushAsync();
+                FormData.client.Connect(FormData.host, FormData.port);
+                FormData.Reader = new StreamReader(FormData.client.GetStream());
+                FormData.Writer = new StreamWriter(FormData.client.GetStream());
+                if (FormData.Reader is null || FormData.Writer is null) return;
+                await FormData.Writer.WriteLineAsync(FormData.loggin.ToString());
+                await FormData.Writer.FlushAsync();
             }
             catch (Exception ex)
             {
@@ -61,19 +61,19 @@ namespace FormTCPChat_Client
 
         public async void button_auth_Click(object sender, EventArgs e)
         {
-            Task.Run(() => ReceiveMessageAsync(Reader));
-            await SendMessageAsync(Writer);
+            Task.Run(() => ReceiveMessageAsync(FormData.Reader));
+            await SendMessageAsync(FormData.Writer);
             send_mess_box.Text = "";
         }
 
         async Task SendMessageAsync(StreamWriter writer)
         {
-            if (send_check == true)
+            if (FormData.send_check == true)
             {
                 string? message = send_mess_box.Text;
                 await writer.WriteLineAsync(message);
                 await writer.FlushAsync();
-                listBox1.Items.Add($"{loggin} : {message}");
+                listBox1.Items.Add($"{FormData.loggin} : {message}");
             }
         }
 

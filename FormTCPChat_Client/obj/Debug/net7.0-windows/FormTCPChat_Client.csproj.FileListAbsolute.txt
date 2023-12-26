@@ -67,3 +67,4 @@ C:\Users\ыыы\source\repos\FormTCPChat_Client\FormTCPChat_Client\obj\Debug\net
 C:\Users\ыыы\source\repos\FormTCPChat_Client\FormTCPChat_Client\obj\Debug\net7.0-windows\FormTCPChat_Client.TehChat.resources
 C:\Users\ыыы\source\repos\FormTCPChat_Client\FormTCPChat_Client\bin\Debug\net7.0-windows\SimpleTCP.dll
 C:\Users\ыыы\source\repos\FormTCPChat_Client\FormTCPChat_Client\bin\Debug\net7.0-windows\FormTCPChat_Client.dll.config
+C:\Users\ыыы\source\repos\FormTCPChat_Client\FormTCPChat_Client\obj\Debug\net7.0-windows\FormTCPChat_Client.sourcelink.json
