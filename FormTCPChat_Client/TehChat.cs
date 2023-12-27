@@ -10,23 +10,65 @@ using System.Windows.Forms;
 using System.Net.Sockets;
 using SimpleTCP;
 using System.Xml.Linq;
+using System.IO;
+using System.Net;
 
 namespace FormTCPChat_Client
 {
     public partial class TehChat : Form
     {
-        private TSettings settings;
+        private TSettings tsettings;
+        private Dictionary<string, string> settings;
 
         public TehChat(string name, string namepc, string typeuser)
         {
             InitializeComponent();
-            settings = new TSettings();
+            LoadSettingsFromFile();
+            tsettings = new TSettings();
             FormData.loggin = $"{ namepc} | { name} ({ typeuser})";
+        }
+
+        private void LoadSettingsFromFile()
+        {
+            // Путь к текстовому файлу
+            string filePath = "ConnectSettings.txt";
+
+            // Чтение данных из файла в словарь
+            settings = ReadSettingsFromFile(filePath);
         }
 
         public TSettings FormData
         {
-            get { return settings; }
+            get { return tsettings; }
+        }
+
+        static Dictionary<string, string> ReadSettingsFromFile(string filePath)
+        {
+            Dictionary<string, string> settings = new Dictionary<string, string>();
+
+            try
+            {
+                // Чтение строк из файла
+                string[] lines = File.ReadAllLines(filePath);
+
+                // Обработка каждой строки и добавление в словарь
+                foreach (string line in lines)
+                {
+                    string[] keyValue = line.Split('=');
+                    if (keyValue.Length == 2)
+                    {
+                        string key = keyValue[0].Trim();
+                        string value = keyValue[1].Trim();
+                        settings[key] = value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при чтении файла: {ex.Message}");
+            }
+
+            return settings;
         }
 
         private void TehChat_Load(object sender, EventArgs e)
@@ -46,7 +88,25 @@ namespace FormTCPChat_Client
             listBox1.Items.Add($"Добро пожаловать, {FormData.loggin}");
             try
             {
-                FormData.client.Connect(FormData.host, FormData.port);
+                if (settings.ContainsKey("host") && settings.ContainsKey("port"))
+                {
+                    string host = settings["host"];
+                    string portString = settings["port"];
+                    host = host.Trim('\"', ' ');
+                    portString = portString.Trim('\"', ' ');
+                    if (int.TryParse(portString, out int port)) 
+                    {
+                        FormData.client.Connect(host, port);
+                    }
+                    else 
+                    {
+                        MessageBox.Show($"Ошибка при преобразовании строки порта в число. {portString}, {host}");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Неверный формат файла настроек.");
+                }
                 FormData.Reader = new StreamReader(FormData.client.GetStream());
                 FormData.Writer = new StreamWriter(FormData.client.GetStream());
                 if (FormData.Reader is null || FormData.Writer is null) return;

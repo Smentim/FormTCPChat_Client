@@ -14,8 +14,6 @@ namespace FormTCPChat_Client
     public class TSettings
     {
         public string loggin {get; set;} = "";
-        public string host {get; set;} = "127.0.0.1";
-        public int port {get; set;} = 8888;
         public bool send_check {get; set;} = true;
         public TcpClient client {get; set;} = new TcpClient();
         public StreamReader? Reader {get; set;} = null;

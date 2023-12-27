@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FormTCPChat_Client")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d8b10d140c98a6ce0644287a873ffa5480f60d5a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d21772fca97be0f5a7a6de43c42503bb2455439")]
 [assembly: System.Reflection.AssemblyProductAttribute("FormTCPChat_Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FormTCPChat_Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
