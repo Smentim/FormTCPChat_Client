@@ -14,6 +14,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FormTCPChat_Client
-build_property.ProjectDir = C:\Users\ыыы\source\repos\FormTCPChat_Client\FormTCPChat_Client\
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.ProjectDir = C:\Users\Виталий\source\repos\FormTCPChat_Client\FormTCPChat_Client\

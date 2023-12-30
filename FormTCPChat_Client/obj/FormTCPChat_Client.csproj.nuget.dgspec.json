@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ыыы\\source\\repos\\FormTCPChat_Client\\FormTCPChat_Client\\FormTCPChat_Client.csproj": {}
+    "C:\\Users\\Виталий\\source\\repos\\FormTCPChat_Client\\FormTCPChat_Client\\FormTCPChat_Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ыыы\\source\\repos\\FormTCPChat_Client\\FormTCPChat_Client\\FormTCPChat_Client.csproj": {
+    "C:\\Users\\Виталий\\source\\repos\\FormTCPChat_Client\\FormTCPChat_Client\\FormTCPChat_Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ыыы\\source\\repos\\FormTCPChat_Client\\FormTCPChat_Client\\FormTCPChat_Client.csproj",
+        "projectUniqueName": "C:\\Users\\Виталий\\source\\repos\\FormTCPChat_Client\\FormTCPChat_Client\\FormTCPChat_Client.csproj",
         "projectName": "FormTCPChat_Client",
-        "projectPath": "C:\\Users\\ыыы\\source\\repos\\FormTCPChat_Client\\FormTCPChat_Client\\FormTCPChat_Client.csproj",
-        "packagesPath": "C:\\Users\\ыыы\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ыыы\\source\\repos\\FormTCPChat_Client\\FormTCPChat_Client\\obj\\",
+        "projectPath": "C:\\Users\\Виталий\\source\\repos\\FormTCPChat_Client\\FormTCPChat_Client\\FormTCPChat_Client.csproj",
+        "packagesPath": "C:\\Users\\Виталий\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Виталий\\source\\repos\\FormTCPChat_Client\\FormTCPChat_Client\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\ыыы\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Виталий\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,9 +39,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "default"
         }
       },
       "frameworks": {
@@ -71,24 +73,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.9, 7.0.9]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[7.0.9, 7.0.9]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.9, 7.0.9]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[7.0.9, 7.0.9]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -97,7 +81,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.7.23376.3\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
