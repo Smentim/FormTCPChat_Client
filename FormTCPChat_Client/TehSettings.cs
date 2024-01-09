@@ -12,53 +12,25 @@ using System.Net.Sockets;
 namespace FormTCPChat_Client
 {
     
-    public class TSettings
+    public static class TSettings
     {
-        private Dictionary<string, string> settings;
-        private string filePath;
 
-        public string loggin {get; set;} = "";
-        public bool send_check {get; set;} = true;
-        public TcpClient client {get; set;} = new TcpClient();
-        public StreamReader? Reader {get; set;} = null;
-        public StreamWriter? Writer {get; set;} = null;
+        public static string Host { get; private set; } = "";
+        public static int Port { get; private set; }
+        public static string loggin {get; set;} = "";
+        public static bool send_check {get; private set;} = true;
+        public static TcpClient client {get; private set;} = new TcpClient();
+        public static StreamReader? Reader {get; set;} = null;
+        public static StreamWriter? Writer {get; set;} = null;
 
-        public TSettings(string filePath)
+        public static void LoadSettings(string filePath)
         {
-            this.filePath = filePath;
-            this.settings = ReadSettingsFromFile(filePath);
-        }
-
-        public string? GetHost()
-        {
-            // Получение значения "host" из настроек
-            return settings.ContainsKey("host") ? settings["host"] : null;
-        }
-
-        public int GetPort()
-        {
-            // Получение значения "port" из настроек
-            if (settings.ContainsKey("port") && int.TryParse(settings["port"], out int port))
-            {
-                return port;
-            }
-            else
-            {
-                // Обработка ошибки, например, возвращение значения по умолчанию
-                return -1;
-            }
-        }
-
-        private Dictionary<string, string> ReadSettingsFromFile(string filePath)
-        {
-            Dictionary<string, string> settings = new Dictionary<string, string>();
-
             try
             {
                 // Чтение строк из файла
                 string[] lines = File.ReadAllLines(filePath);
 
-                // Обработка каждой строки и добавление в словарь
+                // Обработка каждой строки
                 foreach (string line in lines)
                 {
                     string[] keyValue = line.Split('=');
@@ -66,7 +38,15 @@ namespace FormTCPChat_Client
                     {
                         string key = keyValue[0].Trim();
                         string value = keyValue[1].Trim();
-                        settings[key] = value;
+
+                        if (key.Equals("host", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Host = value;
+                        }
+                        else if (key.Equals("port", StringComparison.OrdinalIgnoreCase) && int.TryParse(value, out int parsedPort))
+                        {
+                            Port = parsedPort;
+                        }
                     }
                 }
             }
@@ -75,8 +55,6 @@ namespace FormTCPChat_Client
                 // Обработка ошибки, например, запись в лог
                 Console.WriteLine($"Ошибка при чтении файла: {ex.Message}");
             }
-
-            return settings;
         }
     }
 }
